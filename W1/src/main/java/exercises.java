@@ -18,7 +18,7 @@ public class exercises
             System.out.println("Hello World!");
 
             //DEFINE AN ARRAY OF STRINGS
-            String[] a = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+            String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
 
             //GENERATING A RANDOM INTEGER
             int n = (int)(Math.random()*1000000);
@@ -32,7 +32,7 @@ public class exercises
                 result = digitSum(result);
             }
 
-            System.out.println("Willy-nilly, in this semester I shall learn the " + a[result] + " language.");
+            System.out.println("Willy-nilly, this semester I will learn " + languages[result]);
 
         }
 
