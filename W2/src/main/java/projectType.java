@@ -1,4 +1,4 @@
-public enum TYPE
+public enum projectType
 {
     PRACTICAL,
     THEORETICAL;

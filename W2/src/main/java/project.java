@@ -1,25 +1,25 @@
 public class project
 {
-    private String pname;
+    private String projectName;
     private int maxMark;
-    private TYPE type;
+    private projectType type;
 
 
-    public project(String pname, int maxMark, TYPE type)
+    public project(String projectName, int maxMark, projectType type)
     {
-        this.pname=pname;
+        this.projectName=projectName;
         this.maxMark=maxMark;
         this.type=type;
     }
 
     public project(){}
 
-    public String getPname() {
-        return pname;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public int getMaxMark() {
@@ -30,18 +30,18 @@ public class project
         this.maxMark = maxMark;
     }
 
-    public TYPE getType() {
+    public projectType getType() {
         return type;
     }
 
-    public void setType(TYPE type) {
+    public void setType(projectType type) {
         this.type = type;
     }
 
     @Override
     public String toString() {
         return "project{" +
-                "pname='" + pname + '\'' +
+                "projectName='" + projectName + '\'' +
                 ", maxMark=" + maxMark +
                 ", type=" + type +
                 '}';

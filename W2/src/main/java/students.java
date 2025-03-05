@@ -3,19 +3,15 @@ import java.time.LocalDate;
 public class students
 {
     private String name;
-    private LocalDate birthdate;
+    private LocalDate birthDate;
     private Long regNumber;
 
     public students(){}
-    public students(String name)
-    {
-        this(name, null, null);
-    }
 
-    public students(String name, LocalDate birthdate, Long regNumber)
+    public students(String name, LocalDate birthDate, Long regNumber)
     {
         this.name = name;
-        this.birthdate = birthdate;
+        this.birthDate = birthDate;
         this.regNumber = regNumber;
     }
 
@@ -28,11 +24,11 @@ public class students
     }
 
     public LocalDate getBirthdate() {
-        return birthdate;
+        return birthDate;
     }
 
     public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
+        this.birthDate = birthdate;
     }
 
     public Long getRegNumber() {
@@ -43,21 +39,12 @@ public class students
         this.regNumber = regNumber;
     }
 
-    @Override
-    public boolean equals(Object obj)
-    {
-        if(obj==null || !(obj instanceof students)) return false;
-
-        students other = (students) obj;
-
-        return name.equals(other.name);
-    }
 
     @Override
     public String toString() {
         return "students{" +
                 "name='" + name + '\'' +
-                ", birthdate=" + birthdate +
+                ", birthDate=" + birthDate +
                 ", regNumber=" + regNumber +
                 '}';
     }
