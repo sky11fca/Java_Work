@@ -67,7 +67,7 @@ public class Flight
      */
     public boolean hasConflict(Flight f)
     {
-        return !(this.timePair.getFirst().isBefore(f.getTimePair().getSecond())) || !(f.getTimePair().getSecond().isBefore(this.timePair.getSecond()));
+        return !this.getTimePair().getSecond().isBefore(f.getTimePair().getFirst()) && !this.getTimePair().getFirst().isAfter(f.getTimePair().getSecond());
     }
 
     @Override

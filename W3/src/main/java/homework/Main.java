@@ -43,7 +43,7 @@ public class Main
 
         Set<Flight> flights = new HashSet<>();
         flights.add(new Flight("F1", a1, new Pair<>(LocalTime.of(10,0), LocalTime.of(10, 30))));
-        flights.add(new Flight("F2", a2, new Pair<>(LocalTime.of(9,0), LocalTime.of(10, 15))));
+        flights.add(new Flight("F2", a2, new Pair<>(LocalTime.of(10,0), LocalTime.of(10, 15))));
         flights.add(new Flight("F3", a3, new Pair<>(LocalTime.of(11,0), LocalTime.of(12, 30))));
 
         flights.add(new Flight("F4", f1, new Pair<>(LocalTime.of(13,0), LocalTime.of(14, 30))));
