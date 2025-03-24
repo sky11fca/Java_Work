@@ -13,8 +13,8 @@ public class Main
         List<String> tags1 = List.of("nature", "landscape");
         List<String> tags2 = List.of("people", "portrait");
 
-        Image image1 = new Image("Fat Fuck", LocalDate.of(2023, 5, 15), tags1, Path.of("/home/skullface/Pictures/how-and-when-was-this-fat-fuck-a-thing-v0-d1olvd0zz4vd1.jpeg"));
-        Image image2 = new Image("MLG Drones", LocalDate.of(2023, 5, 15), tags2, Path.of("/home/skullface/Pictures/MLG Drones (NO BLURR).png"));
+        Image image1 = new Image("img1", LocalDate.of(2023, 5, 15), tags1, Path.of("/path/to/smt"));
+        Image image2 = new Image("img2", LocalDate.of(2023, 5, 15), tags2, Path.of("/path/to/smt"));
 
         repo.addImage(image1);
         repo.addImage(image2);
@@ -24,11 +24,11 @@ public class Main
 
         try{
             System.out.println("\n Displaying images...");
-            repo.displayImage("Fat Fuck");
-            repo.displayImage("MLG Drones");
+            repo.displayImage("img1");
+            repo.displayImage("img2");
         } catch (Exception e) {
             System.out.println("ERROR: "+ e.getMessage());
         }
-
+        //It doesn't work, will error out, I will provide example images later
     }
 }
