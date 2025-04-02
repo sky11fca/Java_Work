@@ -13,8 +13,8 @@ public class Main
         List<String> tags1 = List.of("nature", "landscape");
         List<String> tags2 = List.of("people", "portrait");
 
-        Image image1 = new Image("img1", LocalDate.of(2023, 5, 15), tags1, Path.of("/path/to/smt"));
-        Image image2 = new Image("img2", LocalDate.of(2023, 5, 15), tags2, Path.of("/path/to/smt"));
+        Image image1 = new Image("img1", LocalDate.of(2023, 5, 15), tags1, Path.of("/home/skullface/git/java/W5/TestingImages/51mKd533drL.jpg"));
+        Image image2 = new Image("img2", LocalDate.of(2023, 5, 15), tags2, Path.of("/home/skullface/git/java/W5/TestingImages/5908q8fyl0091.jpg"));
 
         repo.addImage(image1);
         repo.addImage(image2);
