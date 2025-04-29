@@ -1,0 +1,17 @@
+DROP TABLE countries;
+DROP TABLE continents;
+
+
+CREATE TABLE IF NOT EXISTS continents(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS countries(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    code VARCHAR(3) NOT NULL UNIQUE,
+    continent_id INT NOT NULL,
+
+    FOREIGN KEY (continent_id) REFERENCES continents(id)
+);
