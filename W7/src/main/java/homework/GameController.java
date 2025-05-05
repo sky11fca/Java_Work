@@ -40,9 +40,9 @@ public class GameController implements Runnable
             t.start();
         }
 
-        for(Thread thread : playerThreads) {
+        for(Thread t : playerThreads) {
             try{
-                thread.join();
+                t.join();
             }
             catch(InterruptedException e)
             {
@@ -98,14 +98,17 @@ public class GameController implements Runnable
     {
         System.out.println("Final Results: ");
 
-        List<Map.Entry<String, Integer>> sortedScores = playerScores.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).collect(Collectors.toList());
+        List<Map.Entry<String, Integer>>sortedScores = playerScores.entrySet()
+                .stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toList());
 
         for(Map.Entry<String, Integer> score : sortedScores) {
             String player = score.getKey();
             int points = score.getValue();
 
             System.out.println("Player " + player + ": " + points);
-            System.out.println(" Words:" + String.join(" ", playerWords.getOrDefault(player, new ArrayList<>())));
+            System.out.println(" Words:" + String.join(", ", playerWords.getOrDefault(player, new ArrayList<>())));
         }
 
         if(!sortedScores.isEmpty()) {

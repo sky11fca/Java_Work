@@ -78,7 +78,10 @@ public class Player implements Runnable
                     Thread.currentThread().interrupt();
                     return;
                 }
-            }catch(InterruptedException e)
+
+                controller.nextTurn();
+            }
+            catch(InterruptedException e)
             {
                 System.out.println(name + " interrupted");
                 Thread.currentThread().interrupt();
@@ -94,13 +97,13 @@ public class Player implements Runnable
             return null;
         }
 
-        StringBuilder availableLetterns = new StringBuilder();
+        StringBuilder availableLetters = new StringBuilder();
         for(Tile tile : hand)
         {
-            availableLetterns.append(tile.getLetter());
+            availableLetters.append(tile.getLetter());
         }
 
-        String letters = availableLetterns.toString();
+        String letters = availableLetters.toString();
 
         for(int attempt = 0; attempt < 10; attempt++) {
             char[] shuffled = letters.toCharArray();
@@ -135,7 +138,7 @@ public class Player implements Runnable
     {
         for(int i= array.length-1; i>0; i--)
         {
-            int index = random.nextInt(i)+1;
+            int index = random.nextInt(i+1);
             char temp = array[index];
             array[index] = array[i];
             array[i] = temp;
@@ -159,17 +162,24 @@ public class Player implements Runnable
 
     private int calculatePoints(String word) {
         int points = 0;
+
+        List<Tile> handCopy = new ArrayList<>(hand);
+
         for(char c : word.toCharArray())
         {
-            for(Tile tile : hand)
+            for(Iterator<Tile> it = handCopy.iterator(); it.hasNext(); )
             {
+                Tile tile = it.next();
                 if(Character.toUpperCase(tile.getLetter()) == Character.toUpperCase(c))
                 {
                     points += tile.getPoints();
+                    it.remove();
                     break;
                 }
             }
         }
+        removeTilesFromWord(word);
+
         return points;
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
 
-    private static final int GAME_TIME_LIMIT_SECONDS = 60;
+    private static final int GAME_TIME_LIMIT_SECONDS = 10;
 
     public static void main(String[] args)
     {

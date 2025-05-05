@@ -21,7 +21,7 @@ public class TimeKeeper implements Runnable
         while(running && !controller.isGameOver())
         {
             long currentTime = System.currentTimeMillis();
-            elapsedTime +=(int) ((currentTime - startTime) / 1000);
+            elapsedTime = (int) ((currentTime - startTime) / 1000);
 
             if(elapsedTime%5 == 0 && elapsedTime != lastReportedSecond) {
                 System.out.println("\n Time elapsed: " + elapsedTime + " seconds");
