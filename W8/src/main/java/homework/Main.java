@@ -17,7 +17,7 @@ public class Main
     {
         try
         {
-            //WorldDataImport.importWorldCapitals("world_capitals.csv");
+            WorldDataImport.importWorldCapitals("world_capitals.csv");
             CountryDAO countryDAO = new CountryDAO();
             CityDAO cityDAO = new CityDAO();
 

@@ -8,9 +8,10 @@
     <persistence-unit name="WorldCitiesPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>labWork.model.Continents</class>
-        <class>labWork.model.Country</class>
-        <class>labWork.model.City</class>
+        <class>homework.model.Continents</class>
+        <class>homework.model.Country</class>
+        <class>homework.model.City</class>
+        <class>homework.model.Language</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
