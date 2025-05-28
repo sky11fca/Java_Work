@@ -10,8 +10,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "continents")
-@NamedQuery(name = "Continents.findByName", query="SELECT c FROM Continents c where c.name LIKE :name")
 
+
+@NamedQueries({
+        @NamedQuery(name = "Continents.findByName", query="SELECT c FROM Continents c where c.name LIKE :name"),
+        @NamedQuery(name = "Continents.findAll", query="SELECT c FROM Continents c")
+})
 
 
 public class Continents
@@ -23,7 +27,7 @@ public class Continents
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 
-    @OneToMany(mappedBy="continent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="continent", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<Country> countries = new ArrayList<>();
 
     public Continents() {

@@ -10,6 +10,6 @@ public class ContinentRepo extends AbstractRepo<Continents>
 {
     public ContinentRepo()
     {
-        super(Continents.class);
+        super();
     }
 }

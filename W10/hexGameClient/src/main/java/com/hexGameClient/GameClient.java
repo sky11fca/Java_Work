@@ -6,58 +6,73 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 
 public class GameClient
 {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 8080;
-    private boolean running;
+    private String playerName;
 
     public static void main(String[] args)
     {
-        GameClient client = new GameClient();
-        client.start();
+        GameClient gameClient = new GameClient();
+        gameClient.start();
     }
 
     private void start()
     {
         try(Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in)))
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true))
         {
-            running = true;
+            Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Connected to " + SERVER_ADDRESS + ":" + SERVER_PORT + "Type exit to quit.");
+            System.out.println("Connected to " + SERVER_ADDRESS + ":" + SERVER_PORT + "\nType help for commands");
+            System.out.print("Enter name: ");
+            playerName = scanner.nextLine();
+            out.println("register " + playerName);
+            System.out.println(in.readLine());
 
-            while(running)
+            while(true)
             {
-                System.out.print("Enter command: ");
-                String command = consoleInput.readLine();
+                System.out.print("> ");
 
-                if(command == null || command.equals("exit"))
-                {
-                    running = false;
+                String command = scanner.nextLine();
+
+                if(command.equals("exit")){
                     break;
                 }
-                out.println(command);
 
-                String respone = in.readLine();
-
-                System.out.println("Response: " + respone);
-
-                if(respone != null && respone.equals("Server Stopped"))
-                {
-                    running = false;
+                if(command.equals("help")){
+                    printHelp();
+                    continue;
                 }
+
+
+                out.println(command);
+                String response = in.readLine();
+                System.out.println(response);
+
             }
         }
-        catch (UnknownHostException e)
-        {
-            System.err.println("Unknown host: " + SERVER_ADDRESS + ":" + SERVER_PORT);
-        } catch (IOException e) {
-            System.err.println("I/O exception: " + e);
+        catch(IOException e){
+            System.err.println("Communication error: " + e.getMessage());
         }
-        System.out.println("Client stopped");
+    }
+
+    private void printHelp(){
+        System.out.println("Available commands:");
+        System.out.println("login <name> - Login with your player name");
+        System.out.println("create <size> <time> <playerName> - Create a new game with time control (in seconds)");
+        System.out.println("join <gameId> <playerName> - Join an existing game");
+        System.out.println("move <gameId> <row> <col> - Make a move (0-based coordinates)");
+        System.out.println("status <gameId> <playerName> - Check game status");
+        System.out.println("list - Display List of active games");
+        System.out.println("exit - Quit the game");
+        System.out.println("stop - Stops server");
+        System.out.println("help - Display this help message");
     }
 }

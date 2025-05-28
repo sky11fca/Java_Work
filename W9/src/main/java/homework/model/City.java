@@ -5,7 +5,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "city")
-@NamedQuery(name = "City.findByName", query = "SELECT c FROM City c WHERE c.name LIKE :name")
+
+@NamedQueries({
+        @NamedQuery(name = "City.findByName", query = "SELECT c FROM City c WHERE c.name LIKE :name"),
+        @NamedQuery(name = "City.findByCapital", query = "SELECT c FROM City c WHERE c.capital = true")
+})
+
 
 
 public class City
