@@ -1,5 +1,5 @@
 package labWork.Entities;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "countries")

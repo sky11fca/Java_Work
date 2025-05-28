@@ -24,12 +24,17 @@ public class CityService {
     }
 
     public City updateCityByName(Long id, String name) {
-        return cityRepository.findById(id)
+       /* return cityRepository.findById(id)
                 .map(city -> {
                     city.setName(name);
                     return cityRepository.save(city);
                 })
-                .orElseThrow(() -> new RuntimeException("City not found"));
+                .orElseThrow(() -> new RuntimeException("City not found"));*/
+
+        City city = cityRepository.findById(id).get();
+        city.setName(name);
+
+        return cityRepository.save(city);
     }
 
     public void deleteCity(Long id) {

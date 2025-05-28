@@ -19,7 +19,7 @@ public class Main{
         SpringApplication.run(Main.class, args);
     }
 
-    @Bean
+   /* @Bean
     public CommandLineRunner run(CityClient cityClient){
         return args -> {
             try {
@@ -57,5 +57,5 @@ public class Main{
                 e.printStackTrace();
             }
         };
-    }
+    }*/
 }

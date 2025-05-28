@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cities")
@@ -37,8 +38,8 @@ public class CityController {
     @Operation(summary = "Updates city by ID")
     public ResponseEntity<City> updateCityName(
             @PathVariable Long id,
-            @RequestBody String cityName){
-        return ResponseEntity.ok(cityService.updateCityByName(id, cityName));
+            @RequestBody Map<String, String> request){
+        return ResponseEntity.ok(cityService.updateCityByName(id, request.get("newName")));
     }
 
     @DeleteMapping("/{id}")
