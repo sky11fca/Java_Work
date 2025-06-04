@@ -1,4 +1,4 @@
-//package labWork;
+package labWork;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,20 +9,13 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
 
-/*
-* NOTICE: It might have a lot of errors but that is exactly how I managed to run the program
-*
-* I went to the terminal and compiled both The testclass with test and Main class with test
-*
-* Then runned java Main TestClass
-*
-* The reason why the IDE throws many errors is that I deleted the package line on top
-*
-* If I left it uncommented, will have thrown Main class reference not found
-*
-* The program works
-*
-* */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@interface TestClass {}
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface Test {}
 
 public class Main {
     public static void main(String[] args) {

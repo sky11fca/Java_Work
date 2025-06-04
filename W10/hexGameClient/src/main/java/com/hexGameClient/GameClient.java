@@ -65,9 +65,9 @@ public class GameClient
 
     private void printHelp(){
         System.out.println("Available commands:");
-        System.out.println("login <name> - Login with your player name");
-        System.out.println("create <size> <time> <playerName> - Create a new game with time control (in seconds)");
-        System.out.println("join <gameId> <playerName> - Join an existing game");
+        System.out.println("register <name> - Register with your player name");
+        System.out.println("create <size> <time> - Create a new game with time control (in seconds)");
+        System.out.println("join <gameId> - Join an existing game");
         System.out.println("move <gameId> <row> <col> - Make a move (0-based coordinates)");
         System.out.println("status <gameId> <playerName> - Check game status");
         System.out.println("list - Display List of active games");
